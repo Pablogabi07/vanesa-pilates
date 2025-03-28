@@ -1,0 +1,304 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+header {
+    background-color: #dd13dd;
+    color: white;
+    padding: 20px;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 150px; /* Ajusta el tamaño de la imagen */
+    height: auto;
+    margin-right: 10px; /* Espacio entre la imagen y el texto */
+}
+
+section {
+    margin: 20px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    color: #6200ea;
+}
+
+#calendario {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    padding: 10px;
+    background-color: #e0e0e0;
+    border-radius: 10px;
+}
+
+#dias-semana {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    padding: 10px;
+    background-color: #ddd;
+    border-radius: 10px 10px 0 0;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.dia-header {
+    text-align: center;
+    padding: 10px;
+    background-color: #dd13dd;
+    border-radius: 5px;
+    font-size: 16px;
+    color: rgb(255, 255, 255);
+}
+
+
+.dia {
+    padding: 15px;
+    background-color: white;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.dia:hover {
+    background-color: #d1c4e9;
+}
+
+.sabado, .domingo {
+    background-color: #ffcccb !important;
+}
+
+/* Contenedor de los label y select en línea */
+.fecha-selector {
+    display: flex;
+    align-items: center; /* Alinea verticalmente */
+    margin-bottom: 15px;
+    flex-wrap: wrap; /* Permite que los elementos se acomoden mejor */
+}
+
+/* Estilo para los labels */
+label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    margin-right: 10px; /* Espacio entre el label y el select */
+}
+
+/* Estilo de los selectores de mes y año */
+select {
+    font-size: 16px;
+    padding: 8px;
+    width: 150px; /* Ajusta el ancho de los selectores */
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    transition: border 0.3s ease, background-color 0.3s ease;
+}
+
+/* Cambia el borde y el fondo cuando el select está enfocado */
+select:focus {
+    border-color: #25d366; /* Color de borde verde */
+    background-color: #e7f5e6; /* Fondo verde suave */
+}
+
+#bienvenida {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(to right, #ca33be, #b388ff);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 9999;
+}
+
+#bienvenida h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+#ingresarBtn {
+    padding: 15px 30px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    background-color: #bebebb;
+    color: black;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+#ingresarBtn:hover {
+    background-color: #e73fcb;
+}
+
+#contenido-principal {
+    display: none; /* Ocultamos el contenido hasta que se haga clic en "Ingresar" */
+}
+
+
+
+/* Estilo responsive para los selects */
+@media (max-width: 768px) {
+    .fecha-selector {
+        flex-direction: column; /* Pone los elementos uno debajo del otro en pantallas pequeñas */
+        align-items: flex-start;
+    }
+    
+    select {
+        width: 100%; /* Hace que el select ocupe todo el ancho en pantallas pequeñas */
+    }
+}
+
+/* Estilo para el calendario responsive */
+@media (max-width: 768px) {
+    #calendario {
+        grid-template-columns: repeat(7, 1fr);
+    }
+
+    .dia {
+        padding: 10px;
+        font-size: 12px; /* Reduce el tamaño de la fuente en pantallas pequeñas */
+    }
+}
+
+#mensaje {
+    display: none;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 20px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+}
+
+button {
+    padding: 10px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#confirmar {
+    background-color: #4caf50;
+    color: white;
+}
+
+#cancelar {
+    background-color: #f44336;
+    color: white;
+}
+
+#cronograma {
+    margin: 20px auto;
+    width: 80%;
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+    font-size: 12px;
+}
+
+th {
+    background-color: #dd13dd;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Estilo para el botón flotante de WhatsApp */
+#whatsapp-btn {
+    position: fixed;
+    bottom: 20px; /* Ajusta la distancia desde la parte inferior */
+    right: 20px;  /* Ajusta la distancia desde la parte derecha */
+    background-color: #25d366; /* Color de fondo de WhatsApp */
+    border-radius: 50%; /* Forma redonda */
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000; /* Asegura que el botón esté encima de otros elementos */
+    transition: all 0.3s ease;
+}
+
+#whatsapp-btn:hover {
+    background-color: #128c7e; /* Cambio de color cuando el usuario pasa el ratón */
+    transform: scale(1.1); /* Efecto de aumento al pasar el ratón */
+}
+
+/* Icono de WhatsApp */
+#whatsapp-btn img {
+    width: 50px; /* Ajusta el tamaño del logo */
+    height: 50px;
+}
+
+
+
+/* Estilo general del Footer */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Enlaces dentro del footer */
+footer a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Estilo responsive para el footer */
+@media (max-width: 768px) {
+    footer {
+        padding: 15px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    footer {
+        padding: 10px 0;
+    }
+}
